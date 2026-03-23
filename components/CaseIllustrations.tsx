@@ -543,7 +543,7 @@ export function WebDevCover() {
       <rect x="494" y="86" width="262" height="180" rx="6" fill="#0d0d18" />
       {/* Abstract person silhouette */}
       <ellipse cx="625" cy="145" rx="40" ry="55" fill="#1e1e2e" />
-      <circle cx="625" cy="118" rx="28" cy="118" r="28" fill="#1a1a30" />
+      <circle cx="625" cy="118" r="28" fill="#1a1a30" />
       <rect x="494" y="280" width="262" height="12" rx="3" fill="#f0f0f0" opacity="0.7" />
       <rect x="494" y="298" width="200" height="10" rx="3" fill="#555" />
       <rect x="494" y="314" width="220" height="10" rx="3" fill="#444" />
