@@ -28,7 +28,7 @@ const contacts = [
     icon: FileText,
     label: "Resume",
     value: "View CV",
-    href: "https://drive.google.com/file/d/1c3dfjyzkUNGhpWkj8zxCJ0VEtCg5mMk5/view?usp=sharing",
+    href: "https://drive.google.com/file/d/1UePQZTgDaP5NLFrnLM4ERkRw0rvVHjES/view?usp=sharing",
     external: true,
   },
 ];
@@ -53,7 +53,7 @@ export default function ContactSection() {
             Contact
           </span>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-[#1a1a1a] mt-3 mb-4">
-            Vamos trabalhar juntos!
+            Let&apos;s work together!
           </h2>
           <p className="text-[#666] text-lg">
             Have a project in mind? I&apos;d love to hear about it.
