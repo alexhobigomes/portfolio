@@ -53,7 +53,7 @@ export default function ContactSection() {
             Contact
           </span>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-[#1a1a1a] mt-3 mb-4">
-            Let&apos;s Work Together
+            Vamos trabalhar juntos!
           </h2>
           <p className="text-[#666] text-lg">
             Have a project in mind? I&apos;d love to hear about it.

@@ -26,6 +26,10 @@ body {
   }
 }
 
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
 ::selection {
   background-color: #6c63ff;
   color: #ffffff;

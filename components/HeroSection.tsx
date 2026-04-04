@@ -2,39 +2,52 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
 
-function ProfilePhoto() {
-  const [hasError, setHasError] = useState(false);
-
-  if (!hasError) {
-    return (
-      <div className="relative w-[200px] h-[200px]">
-        <Image
-          src="/profile.jpg"
-          alt="Alex Hobi"
-          fill
-          unoptimized
-          className="object-cover rounded-[2rem] shadow-2xl shadow-black/40"
-          onError={() => setHasError(true)}
-          priority
-        />
-        {/* Subtle ring glow */}
-        <div className="absolute inset-0 rounded-[2rem] ring-1 ring-white/10" />
-      </div>
-    );
-  }
-
-  // Placeholder shown until user adds /public/profile.jpg
+function FlipCard() {
   return (
-    <div className="w-[200px] h-[200px] rounded-[2rem] bg-[#1a1a2e] border border-dashed border-[#6c63ff]/40 flex flex-col items-center justify-center gap-2 shadow-2xl shadow-black/40">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="opacity-40">
-        <circle cx="12" cy="8" r="4" stroke="#6c63ff" strokeWidth="1.5"/>
-        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#6c63ff" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-      <span className="text-[10px] text-[#555] text-center px-3 leading-tight">
-        Add photo to<br/>/public/profile.jpg
-      </span>
+    <div
+      className="flip-card"
+      style={{ perspective: "1000px", width: "200px", height: "200px", transformStyle: "preserve-3d" }}
+    >
+      <div
+        className="flip-inner"
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          transformStyle: "preserve-3d",
+          transition: "transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
+      >
+        {/* Front: profile photo */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backfaceVisibility: "hidden" }}>
+          <div className="relative w-full h-full">
+            <Image
+              src="/profile.jpg"
+              alt="Alex Hobi"
+              fill
+              unoptimized
+              className="object-cover rounded-[2rem] shadow-2xl shadow-black/40"
+              priority
+            />
+            <div className="absolute inset-0 rounded-[2rem] ring-1 ring-white/10" />
+          </div>
+        </div>
+
+        {/* Back: Brazilian flag */}
+        <div
+          className="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40"
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <Image
+            src="/brazil-flag.png"
+            alt="Bandeira do Brasil"
+            fill
+            unoptimized
+            className="object-cover"
+          />
+        </div>
+      </div>
     </div>
   );
 }
@@ -123,8 +136,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center mb-14"
+          style={{ transformStyle: "preserve-3d" }}
         >
-          <ProfilePhoto />
+          <FlipCard />
         </motion.div>
 
         {/* Subtitle */}
