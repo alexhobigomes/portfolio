@@ -19,7 +19,7 @@ export default function Footer() {
             <Linkedin size={18} />
           </a>
           <a
-            href="https://wa.me/5511963510810"
+            href="https://wa.me/5511963520810"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"

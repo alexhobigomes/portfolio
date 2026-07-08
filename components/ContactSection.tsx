@@ -98,7 +98,7 @@ export default function ContactSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <a
-            href="https://wa.me/5511963510810"
+            href="https://wa.me/5511963520810"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-[#6c63ff] text-white font-medium text-base rounded-xl hover:bg-[#5a52d5] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#6c63ff]/25"

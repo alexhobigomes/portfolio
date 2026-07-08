@@ -49,7 +49,7 @@ export default function Navbar() {
         </div>
 
         <a
-          href="https://wa.me/5511963510810"
+          href="https://wa.me/5511963520810"
           target="_blank"
           rel="noopener noreferrer"
           className="px-4 py-2 bg-[#6c63ff] text-white text-sm font-medium rounded-lg hover:bg-[#5a52d5] transition-colors"
