@@ -92,90 +92,105 @@ export default function DesignEngineeringCase() {
 
             {/* Discovery process diagram */}
             <div className="mt-8">
-              <svg viewBox="0 0 700 655" xmlns="http://www.w3.org/2000/svg" className="w-full rounded-2xl">
+              <svg viewBox="0 0 700 640" xmlns="http://www.w3.org/2000/svg" className="w-full rounded-2xl">
                 <defs>
-                  <marker id="arrowDisc" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                    <polygon points="0 0, 8 3, 0 6" fill="#aaa" />
+                  <linearGradient id="discBg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#0f0f1a" />
+                    <stop offset="100%" stopColor="#13131f" />
+                  </linearGradient>
+                  <marker id="arr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                    <polygon points="0 0, 7 2.5, 0 5" fill="rgba(255,255,255,0.25)" />
+                  </marker>
+                  <marker id="arrDash" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                    <polygon points="0 0, 7 2.5, 0 5" fill="rgba(255,255,255,0.18)" />
                   </marker>
                 </defs>
 
                 {/* Background */}
-                <rect width="700" height="655" fill="#f7f4ef" />
+                <rect width="700" height="640" fill="url(#discBg)" rx="20" />
 
-                {/* ChatGPT */}
-                <rect x="30" y="28" width="170" height="78" rx="14" fill="#c9e8c2" />
-                <text x="115" y="62" textAnchor="middle" fill="#2c5f26" fontWeight="700" fontSize="15" fontFamily="system-ui, sans-serif">ChatGPT</text>
-                <text x="115" y="84" textAnchor="middle" fill="#4a8a42" fontSize="12" fontFamily="system-ui, sans-serif">Interview script</text>
+                {/* ── ROW 1: ChatGPT → 8 Interviews ── */}
 
-                {/* Arrow + label */}
-                <line x1="200" y1="67" x2="240" y2="67" stroke="#aaa" strokeWidth="1.5" markerEnd="url(#arrowDisc)" />
-                <text x="220" y="60" textAnchor="middle" fill="#aaa" fontSize="11" fontFamily="system-ui, sans-serif">script</text>
+                {/* ChatGPT card */}
+                <rect x="28" y="32" width="168" height="76" rx="14" fill="rgba(16,163,127,0.12)" stroke="#10a37f" strokeWidth="1.5" />
+                <rect x="28" y="32" width="168" height="4" rx="2" fill="#10a37f" />
+                <text x="112" y="67" textAnchor="middle" fill="white" fontWeight="700" fontSize="14" fontFamily="system-ui, sans-serif">ChatGPT</text>
+                <text x="112" y="86" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="11" fontFamily="system-ui, sans-serif">Interview script</text>
 
-                {/* 8 interviews */}
-                <rect x="242" y="28" width="210" height="78" rx="14" fill="#d4c5f9" />
-                <text x="347" y="62" textAnchor="middle" fill="#3d2080" fontWeight="700" fontSize="15" fontFamily="system-ui, sans-serif">8 interviews</text>
-                <text x="347" y="84" textAnchor="middle" fill="#5a3ab0" fontSize="12" fontFamily="system-ui, sans-serif">Google Meet · transcripts</text>
+                {/* Arrow ChatGPT → 8 Interviews */}
+                <line x1="196" y1="70" x2="230" y2="70" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" markerEnd="url(#arr)" />
+                <text x="213" y="63" textAnchor="middle" fill="rgba(255,255,255,0.25)" fontSize="10" fontFamily="system-ui, sans-serif">script</text>
 
-                {/* Dashed vertical */}
-                <line x1="347" y1="106" x2="347" y2="150" stroke="#aaa" strokeWidth="1.5" strokeDasharray="5,4" markerEnd="url(#arrowDisc)" />
+                {/* 8 Interviews card */}
+                <rect x="238" y="32" width="212" height="76" rx="14" fill="rgba(108,99,255,0.12)" stroke="#6c63ff" strokeWidth="1.5" />
+                <rect x="238" y="32" width="212" height="4" rx="2" fill="#6c63ff" />
+                <text x="344" y="67" textAnchor="middle" fill="white" fontWeight="700" fontSize="14" fontFamily="system-ui, sans-serif">8 interviews</text>
+                <text x="344" y="86" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="11" fontFamily="system-ui, sans-serif">Google Meet · transcripts</text>
 
-                {/* 8 real participants dots */}
-                <circle cx="323" cy="162" r="6" fill="#b0a8d4" opacity="0.85" />
-                <circle cx="337" cy="162" r="6" fill="#b0a8d4" opacity="0.85" />
-                <circle cx="351" cy="162" r="6" fill="#b0a8d4" opacity="0.85" />
-                <circle cx="365" cy="162" r="6" fill="#b0a8d4" opacity="0.85" />
-                <circle cx="323" cy="177" r="6" fill="#b0a8d4" opacity="0.4" />
-                <circle cx="337" cy="177" r="6" fill="#b0a8d4" opacity="0.4" />
-                <circle cx="351" cy="177" r="6" fill="#b0a8d4" opacity="0.4" />
-                <circle cx="365" cy="177" r="6" fill="#b0a8d4" opacity="0.4" />
-                <text x="344" y="200" textAnchor="middle" fill="#999" fontSize="12" fontFamily="system-ui, sans-serif">8 real participants</text>
+                {/* Dashed vertical from 8 Interviews down */}
+                <line x1="344" y1="108" x2="344" y2="150" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#arrDash)" />
 
-                {/* L-shaped dashed paths */}
-                <path d="M 335,204 L 335,238 L 180,238 L 180,273" stroke="#aaa" strokeWidth="1.5" strokeDasharray="5,4" fill="none" markerEnd="url(#arrowDisc)" />
-                <path d="M 358,204 L 358,238 L 530,238 L 530,273" stroke="#aaa" strokeWidth="1.5" strokeDasharray="5,4" fill="none" markerEnd="url(#arrowDisc)" />
+                {/* ── ROW 2: 8 real participants ── */}
+                <circle cx="320" cy="161" r="7" fill="#6c63ff" opacity="0.85" />
+                <circle cx="334" cy="161" r="7" fill="#6c63ff" opacity="0.85" />
+                <circle cx="348" cy="161" r="7" fill="#6c63ff" opacity="0.85" />
+                <circle cx="362" cy="161" r="7" fill="#6c63ff" opacity="0.85" />
+                <circle cx="320" cy="177" r="7" fill="#6c63ff" opacity="0.28" />
+                <circle cx="334" cy="177" r="7" fill="#6c63ff" opacity="0.28" />
+                <circle cx="348" cy="177" r="7" fill="#6c63ff" opacity="0.28" />
+                <circle cx="362" cy="177" r="7" fill="#6c63ff" opacity="0.28" />
+                <text x="341" y="201" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="11" fontFamily="system-ui, sans-serif">8 real participants</text>
 
-                {/* NotebookLM */}
-                <rect x="50" y="275" width="260" height="80" rx="14" fill="#d4b8f4" />
-                <text x="180" y="308" textAnchor="middle" fill="#4a1d96" fontWeight="700" fontSize="15" fontFamily="system-ui, sans-serif">NotebookLM</text>
-                <text x="180" y="330" textAnchor="middle" fill="#6a3db0" fontSize="12" fontFamily="system-ui, sans-serif">Pattern synthesis</text>
+                {/* Dashed L-paths to NotebookLM and Gemini */}
+                <path d="M 328,206 L 328,240 L 173,240 L 173,270" stroke="rgba(255,255,255,0.16)" strokeWidth="1.5" strokeDasharray="4,3" fill="none" markerEnd="url(#arrDash)" />
+                <path d="M 355,206 L 355,240 L 526,240 L 526,270" stroke="rgba(255,255,255,0.16)" strokeWidth="1.5" strokeDasharray="4,3" fill="none" markerEnd="url(#arrDash)" />
 
-                {/* Wavy lines */}
-                <path d="M 55,372 Q 80,364 105,372 Q 130,380 155,372 Q 180,364 205,372 Q 230,380 255,372 Q 280,364 305,372" stroke="#ccc" strokeWidth="1.5" fill="none" />
-                <path d="M 55,384 Q 80,376 105,384 Q 130,392 155,384 Q 180,376 205,384 Q 230,392 255,384 Q 280,376 305,384" stroke="#ccc" strokeWidth="1.5" fill="none" />
-                <path d="M 55,396 Q 80,388 105,396 Q 130,404 155,396 Q 180,388 205,396 Q 230,404 255,396 Q 280,388 305,396" stroke="#ccc" strokeWidth="1.5" fill="none" />
-                <text x="180" y="422" textAnchor="middle" fill="#aaa" fontSize="11" fontFamily="system-ui, sans-serif">themes · quotes · patterns</text>
+                {/* ── ROW 3: NotebookLM | Gemini ── */}
 
-                {/* Gemini */}
-                <rect x="420" y="275" width="220" height="80" rx="14" fill="#b8d8f4" />
-                <text x="530" y="308" textAnchor="middle" fill="#1a4a80" fontWeight="700" fontSize="15" fontFamily="system-ui, sans-serif">Gemini</text>
-                <text x="530" y="330" textAnchor="middle" fill="#2a6aaa" fontSize="12" fontFamily="system-ui, sans-serif">Competitive analysis</text>
+                {/* NotebookLM card */}
+                <rect x="44" y="272" width="258" height="78" rx="14" fill="rgba(168,85,247,0.12)" stroke="#a855f7" strokeWidth="1.5" />
+                <rect x="44" y="272" width="258" height="4" rx="2" fill="#a855f7" />
+                <text x="173" y="307" textAnchor="middle" fill="white" fontWeight="700" fontSize="14" fontFamily="system-ui, sans-serif">NotebookLM</text>
+                <text x="173" y="326" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="11" fontFamily="system-ui, sans-serif">Pattern synthesis</text>
+
+                {/* Wavy lines below NotebookLM */}
+                <path d="M 58,368 Q 83,360 108,368 Q 133,376 158,368 Q 183,360 208,368 Q 233,376 258,368 Q 283,360 295,368" stroke="rgba(168,85,247,0.35)" strokeWidth="1.5" fill="none" />
+                <path d="M 58,380 Q 83,372 108,380 Q 133,388 158,380 Q 183,372 208,380 Q 233,388 258,380 Q 283,372 295,380" stroke="rgba(168,85,247,0.2)" strokeWidth="1.5" fill="none" />
+                <text x="173" y="402" textAnchor="middle" fill="rgba(255,255,255,0.28)" fontSize="10.5" fontFamily="system-ui, sans-serif">themes · quotes · patterns</text>
+
+                {/* Gemini card */}
+                <rect x="418" y="272" width="220" height="78" rx="14" fill="rgba(59,130,246,0.12)" stroke="#3b82f6" strokeWidth="1.5" />
+                <rect x="418" y="272" width="220" height="4" rx="2" fill="#3b82f6" />
+                <text x="528" y="307" textAnchor="middle" fill="white" fontWeight="700" fontSize="14" fontFamily="system-ui, sans-serif">Gemini</text>
+                <text x="528" y="326" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="11" fontFamily="system-ui, sans-serif">Competitive analysis</text>
 
                 {/* Gemini tags */}
-                <rect x="428" y="368" width="100" height="24" rx="12" fill="#e8e8e8" stroke="#ccc" strokeWidth="1" />
-                <text x="478" y="384" textAnchor="middle" fill="#666" fontSize="11" fontFamily="system-ui, sans-serif">benchmarks</text>
-                <rect x="536" y="368" width="95" height="24" rx="12" fill="#e8e8e8" stroke="#ccc" strokeWidth="1" />
-                <text x="583" y="384" textAnchor="middle" fill="#666" fontSize="11" fontFamily="system-ui, sans-serif">UX patterns</text>
-                <text x="530" y="413" textAnchor="middle" fill="#aaa" fontSize="11" fontFamily="system-ui, sans-serif">market references</text>
+                <rect x="426" y="362" width="97" height="22" rx="11" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+                <text x="474" y="377" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10.5" fontFamily="system-ui, sans-serif">benchmarks</text>
+                <rect x="530" y="362" width="97" height="22" rx="11" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+                <text x="578" y="377" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10.5" fontFamily="system-ui, sans-serif">UX patterns</text>
+                <text x="528" y="403" textAnchor="middle" fill="rgba(255,255,255,0.28)" fontSize="10.5" fontFamily="system-ui, sans-serif">market references</text>
 
-                {/* L-shaped arrows to Claude */}
-                <path d="M 310,315 L 355,315 L 355,451" stroke="#aaa" strokeWidth="1.5" fill="none" markerEnd="url(#arrowDisc)" />
-                <path d="M 420,315 L 375,315 L 375,451" stroke="#aaa" strokeWidth="1.5" fill="none" markerEnd="url(#arrowDisc)" />
+                {/* L-shaped arrows → Claude */}
+                <path d="M 302,311 L 352,311 L 352,450" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" fill="none" markerEnd="url(#arr)" />
+                <path d="M 418,311 L 368,311 L 368,450" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" fill="none" markerEnd="url(#arr)" />
 
-                {/* Claude */}
-                <rect x="225" y="453" width="215" height="78" rx="14" fill="#f5c8b0" />
-                <text x="332" y="487" textAnchor="middle" fill="#7a3520" fontWeight="700" fontSize="15" fontFamily="system-ui, sans-serif">Claude</text>
-                <text x="332" y="509" textAnchor="middle" fill="#a05030" fontSize="12" fontFamily="system-ui, sans-serif">Synthesis · CDE · PRD</text>
+                {/* ── ROW 4: Claude ── */}
+                <rect x="218" y="452" width="224" height="78" rx="14" fill="rgba(249,115,22,0.12)" stroke="#f97316" strokeWidth="1.5" />
+                <rect x="218" y="452" width="224" height="4" rx="2" fill="#f97316" />
+                <text x="330" y="487" textAnchor="middle" fill="white" fontWeight="700" fontSize="14" fontFamily="system-ui, sans-serif">Claude</text>
+                <text x="330" y="506" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="11" fontFamily="system-ui, sans-serif">Synthesis · CDE · PRD</text>
 
-                {/* Arrow to Discovery output */}
-                <line x1="332" y1="531" x2="332" y2="554" stroke="#aaa" strokeWidth="1.5" markerEnd="url(#arrowDisc)" />
+                {/* Arrow Claude → Discovery output */}
+                <line x1="330" y1="530" x2="330" y2="551" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" markerEnd="url(#arr)" />
 
-                {/* Discovery output */}
-                <rect x="70" y="556" width="560" height="68" rx="14" fill="#e4e4e4" stroke="#ccc" strokeWidth="1" />
-                <text x="350" y="586" textAnchor="middle" fill="#1a1a1a" fontWeight="600" fontSize="14" fontFamily="system-ui, sans-serif">Discovery output</text>
-                <text x="350" y="607" textAnchor="middle" fill="#888" fontSize="11" fontFamily="system-ui, sans-serif">Affinity map · CDE matrix · Executive brief</text>
+                {/* ── ROW 5: Discovery output ── */}
+                <rect x="55" y="553" width="570" height="60" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
+                <text x="340" y="581" textAnchor="middle" fill="white" fontWeight="600" fontSize="14" fontFamily="system-ui, sans-serif">Discovery output</text>
+                <text x="340" y="600" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="11" fontFamily="system-ui, sans-serif">Affinity map · CDE matrix · Executive brief</text>
 
                 {/* Footer */}
-                <text x="350" y="641" textAnchor="middle" fill="#aaa" fontSize="12" fontFamily="system-ui, sans-serif">1 day · previously 1 week</text>
+                <text x="350" y="628" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="11" fontFamily="system-ui, sans-serif">1 day · previously 1 week</text>
               </svg>
             </div>
           </div>
