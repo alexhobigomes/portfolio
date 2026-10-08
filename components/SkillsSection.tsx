@@ -103,7 +103,6 @@ const aiTools = [
   { name: "Claude",       Icon: ClaudeIcon,      color: "#CC785C", bg: "rgba(204,120,92,0.12)",  border: "rgba(204,120,92,0.25)"  },
   { name: "ChatGPT",      Icon: ChatGPTIcon,     color: "#10a37f", bg: "rgba(16,163,127,0.12)",  border: "rgba(16,163,127,0.25)"  },
   { name: "Gemini",       Icon: GeminiIcon,      color: "#4285f4", bg: "rgba(66,133,244,0.12)",  border: "rgba(66,133,244,0.25)"  },
-  { name: "NotebookLM",   Icon: NotebookLMIcon,  color: "#1d4ed8", bg: "rgba(66,133,244,0.12)",  border: "rgba(66,133,244,0.30)"  },
   { name: "Claude Code",  Icon: ClaudeCodeIcon,  color: "#7c3aed", bg: "rgba(124,58,237,0.12)",  border: "rgba(124,58,237,0.25)"  },
 ];
 
