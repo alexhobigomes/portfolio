@@ -14,8 +14,8 @@ const contacts = [
   {
     icon: Phone,
     label: "Phone",
-    value: "(11) 96351-0810",
-    href: "tel:+5511963510810",
+    value: "(11) 96352-0810",
+    href: "tel:+5511963520810",
   },
   {
     icon: Linkedin,
