@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import CustomCursor from "@/components/CustomCursor";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,13 +53,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${syne.variable}`}>
+    <html lang="pt" className={`${inter.variable} ${syne.variable}`}>
       <body className="bg-white text-[#1a1a1a] font-sans antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <ScrollToTop />
-        <CustomCursor />
+        <LanguageProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <ScrollToTop />
+          <CustomCursor />
+        </LanguageProvider>
       </body>
     </html>
   );

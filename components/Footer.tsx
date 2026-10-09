@@ -1,12 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import { Linkedin } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useT } from "@/lib/i18n/translations";
 
 export default function Footer() {
+  const { lang } = useLanguage();
+  const tr = useT(lang);
+
   return (
     <footer className="border-t border-[#1e1e1e] bg-[#111111]">
       <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-[#888] text-sm">
-          © 2026 Alex Hobi. All rights reserved.
+          {tr.footer.copyright}
         </p>
         <div className="flex items-center gap-4">
           <a

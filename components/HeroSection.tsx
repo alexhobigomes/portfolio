@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useT } from "@/lib/i18n/translations";
 
 function FlipCard() {
   return (
@@ -53,55 +55,33 @@ function FlipCard() {
 }
 
 export default function HeroSection() {
+  const { lang } = useLanguage();
+  const tr = useT(lang);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0d0d12] pt-16 pb-24">
 
       {/* Gradient orbs */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Large purple orb — top left */}
         <div
           className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-30"
-          style={{
-            background: "radial-gradient(circle, #6c63ff 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
+          style={{ background: "radial-gradient(circle, #6c63ff 0%, transparent 70%)", filter: "blur(80px)" }}
         />
-        {/* Indigo/blue orb — bottom right */}
         <div
           className="absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full opacity-20"
-          style={{
-            background: "radial-gradient(circle, #4f46e5 0%, transparent 70%)",
-            filter: "blur(90px)",
-          }}
+          style={{ background: "radial-gradient(circle, #4f46e5 0%, transparent 70%)", filter: "blur(90px)" }}
         />
-        {/* Small accent orb — center right */}
         <div
           className="absolute top-1/3 right-1/4 w-[280px] h-[280px] rounded-full opacity-15"
-          style={{
-            background: "radial-gradient(circle, #a78bfa 0%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
+          style={{ background: "radial-gradient(circle, #a78bfa 0%, transparent 70%)", filter: "blur(60px)" }}
         />
-
-        {/* Subtle dot grid overlay */}
         <div
           className="absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
+          style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "32px 32px" }}
         />
-
-        {/* Noise grain texture */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.04]">
           <filter id="grain">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.65"
-              numOctaves="3"
-              stitchTiles="stitch"
-            />
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
             <feColorMatrix type="saturate" values="0" />
           </filter>
           <rect width="100%" height="100%" filter="url(#grain)" />
@@ -117,7 +97,7 @@ export default function HeroSection() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#6c63ff]/30 bg-[#6c63ff]/10 text-[#a78bfa] text-sm font-medium mb-8"
         >
           <span className="w-2 h-2 rounded-full bg-[#6c63ff] animate-pulse" />
-          Lead Product Designer at Renault LATAM
+          {tr.hero.badge}
         </motion.div>
 
         {/* Main heading */}
@@ -127,7 +107,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-display font-bold text-6xl md:text-8xl text-[#f0f0f0] mb-10 leading-none tracking-tight"
         >
-          Hi, I&apos;m Alex!
+          {tr.hero.heading}
         </motion.h1>
 
         {/* Profile photo */}
@@ -148,7 +128,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-[#9ca3af] text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
         >
-          Design Engineer with 14+ years in tech — from data analytics to digital products that blend exceptional experiences with real business impacts
+          {tr.hero.subtitle}
         </motion.p>
       </div>
 
@@ -159,7 +139,7 @@ export default function HeroSection() {
         transition={{ duration: 1, delay: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-white/50 text-xs tracking-widest uppercase">Scroll</span>
+        <span className="text-white/50 text-xs tracking-widest uppercase">{tr.hero.scroll}</span>
         <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent" />
       </motion.div>
     </section>

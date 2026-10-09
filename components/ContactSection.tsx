@@ -3,6 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Mail, Linkedin, FileText, MessageCircle } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useT } from "@/lib/i18n/translations";
 
 const WhatsAppIcon = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -10,39 +12,41 @@ const WhatsAppIcon = ({ size = 18, className = "" }: { size?: number; className?
   </svg>
 );
 
-const contacts = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "hobigomes@gmail.com",
-    href: "mailto:hobigomes@gmail.com",
-  },
-  {
-    icon: WhatsAppIcon,
-    label: "WhatsApp",
-    value: "(11) 96352-0810",
-    href: "https://wa.me/5511963520810?text=Ol%C3%A1%2C%20vi%20seu%20portfolio%20online%20e%20gostaria%20de%20mais%20detalhes%2C%20podemos%20conversar%3F.",
-    external: true,
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "alexhobigomes",
-    href: "https://www.linkedin.com/in/alexhobigomes/",
-    external: true,
-  },
-  {
-    icon: FileText,
-    label: "Resume",
-    value: "View CV",
-    href: "https://drive.google.com/file/d/1UePQZTgDaP5NLFrnLM4ERkRw0rvVHjES/view?usp=sharing",
-    external: true,
-  },
-];
-
 export default function ContactSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { lang } = useLanguage();
+  const tr = useT(lang);
+
+  const contacts = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "hobigomes@gmail.com",
+      href: "mailto:hobigomes@gmail.com",
+    },
+    {
+      icon: WhatsAppIcon,
+      label: "WhatsApp",
+      value: "(11) 96352-0810",
+      href: "https://wa.me/5511963520810?text=Ol%C3%A1%2C%20vi%20seu%20portfolio%20online%20e%20gostaria%20de%20mais%20detalhes%2C%20podemos%20conversar%3F.",
+      external: true,
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      value: "alexhobigomes",
+      href: "https://www.linkedin.com/in/alexhobigomes/",
+      external: true,
+    },
+    {
+      icon: FileText,
+      label: tr.contact.resumeLabel,
+      value: tr.contact.resumeValue,
+      href: "https://drive.google.com/file/d/1UePQZTgDaP5NLFrnLM4ERkRw0rvVHjES/view?usp=sharing",
+      external: true,
+    },
+  ];
 
   return (
     <section id="contact" className="py-24 bg-[#f4f4f5]">
@@ -57,17 +61,17 @@ export default function ContactSection() {
           className="mb-12"
         >
           <span className="text-[#6c63ff] text-sm font-medium tracking-widest uppercase">
-            Contact
+            {tr.contact.tag}
           </span>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-[#1a1a1a] mt-3 mb-4">
-            Let&apos;s work together!
+            {tr.contact.heading}
           </h2>
           <p className="text-[#666] text-lg">
-            Have a project in mind? I&apos;d love to hear about it.
+            {tr.contact.subheading}
           </p>
         </motion.div>
 
-        {/* Contact items — 2×2 grid */}
+        {/* Contact items */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -98,7 +102,7 @@ export default function ContactSection() {
           })}
         </motion.div>
 
-        {/* CTA button — below the grid, left-aligned */}
+        {/* CTA button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -111,7 +115,7 @@ export default function ContactSection() {
             className="inline-flex items-center gap-3 px-8 py-4 bg-[#6c63ff] text-white font-medium text-base rounded-xl hover:bg-[#5a52d5] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#6c63ff]/25"
           >
             <MessageCircle size={18} />
-            Send a message
+            {tr.contact.cta}
           </a>
         </motion.div>
 

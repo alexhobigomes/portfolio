@@ -3,44 +3,28 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import ProjectCard from "./ProjectCard";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useT } from "@/lib/i18n/translations";
 
-const projects = [
-  {
-    tag: "Design Engineering",
-    title: "AI-Driven Design Process",
-    href: "/cases/design-engineering",
-    imageSrc: "cases/design-engineering/cover.png",
-    imageAlt: "Website for plastic surgery specialist",
-  },
-  {
-    tag: "Usability Testing",
-    title: "Validating Hypothesis for Mobility App",
-    href: "/cases/usability-testing",
-    imageSrc: "cases/usability-testing/cover.jpg",
-    imageAlt: "Usability testing for mobility app",
-    imageObjectPosition: "center 65%",
-  },
-  {
-    tag: "UX Research",
-    title: "Exploratory Analysis for Business Strategy",
-    href: "/cases/ux-research",
-    imageSrc: "cases/ux-research/cover.jpg",
-    imageAlt: "UX research for churn reduction",
-    imageObjectPosition: "center 65%",
-  },
-  {
-    tag: "UI Design",
-    title: "Building Interfaces for Streaming Product",
-    href: "/cases/ui-streaming",
-    imageSrc: "cases/ui-streaming/cover.jpg",
-    imageAlt: "SBT Vídeos streaming platform UI design",
-    imageObjectPosition: "center 65%",
-  },
+const projectHrefs = [
+  "/cases/design-engineering",
+  "/cases/usability-testing",
+  "/cases/ux-research",
+  "/cases/ui-streaming",
+];
+
+const projectImages = [
+  { src: "cases/design-engineering/cover.png", alt: "Website for plastic surgery specialist" },
+  { src: "cases/usability-testing/cover.jpg", alt: "Usability testing for mobility app", pos: "center 65%" },
+  { src: "cases/ux-research/cover.jpg", alt: "UX research for churn reduction", pos: "center 65%" },
+  { src: "cases/ui-streaming/cover.jpg", alt: "SBT Vídeos streaming platform UI design", pos: "center 65%" },
 ];
 
 export default function ProjectsGrid() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { lang } = useLanguage();
+  const tr = useT(lang);
 
   return (
     <section id="projects" className="py-24 bg-white">
@@ -53,16 +37,25 @@ export default function ProjectsGrid() {
           className="mb-14"
         >
           <span className="text-[#6c63ff] text-sm font-medium tracking-widest uppercase">
-            Work
+            {tr.projects.tag}
           </span>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-[#1a1a1a] mt-3">
-            Projects
+            {tr.projects.heading}
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.href} {...project} index={i} />
+          {tr.projects.items.map((project, i) => (
+            <ProjectCard
+              key={projectHrefs[i]}
+              tag={project.tag}
+              title={project.title}
+              href={projectHrefs[i]}
+              imageSrc={projectImages[i].src}
+              imageAlt={projectImages[i].alt}
+              imageObjectPosition={projectImages[i].pos}
+              index={i}
+            />
           ))}
         </div>
       </div>

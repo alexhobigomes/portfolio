@@ -2,12 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
-const metrics = [
-  { value: "14+", label: "Years of experience in technology" },
-  { value: "6+", label: "Years in UX / UI & Product Strategy" },
-  { value: "8", label: "Years working with Business Intelligence" },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useT } from "@/lib/i18n/translations";
 
 function MetricCard({
   value,
@@ -38,6 +34,8 @@ function MetricCard({
 export default function AboutSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { lang } = useLanguage();
+  const tr = useT(lang);
 
   return (
     <section id="about" className="py-24 bg-white">
@@ -50,26 +48,20 @@ export default function AboutSection() {
           className="mb-16"
         >
           <span className="text-[#6c63ff] text-sm font-medium tracking-widest uppercase">
-            About
+            {tr.about.tag}
           </span>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-[#1a1a1a] mt-3 mb-8">
-            About Me
+            {tr.about.heading}
           </h2>
           <div className="max-w-3xl space-y-5">
-            <p className="text-[#555] text-lg leading-relaxed">
-              Designer with 14+ years in technology, including 6+ in UX/UI and 8 in Business Intelligence. Bachelor&apos;s in Information Systems and an MBA in UX Research, DesignOps, and Leadership.
-            </p>
-            <p className="text-[#555] text-lg leading-relaxed">
-              Currently at Renault Brasil, I lead strategic discovery and delivery for digital products across all LATAM projects, working closely with Product, Engineering, and Business teams. Previous experience includes Veloe (main app), Fiserv (digital products, payment terminals, and internal financial systems), and SBT (SBT+ streaming app, platform, and internal systems).
-            </p>
-            <p className="text-[#555] text-lg leading-relaxed">
-              Core strengths: user research, in-depth interviews, journey mapping, affinity mapping, data analysis, prototyping, ideation, and workshops — with strong DesignOps leadership and hands-on use of AI throughout the design process (Claude, Claude Code, ChatGPT, Antigravity, Gemini).
-            </p>
+            <p className="text-[#555] text-lg leading-relaxed">{tr.about.p1}</p>
+            <p className="text-[#555] text-lg leading-relaxed">{tr.about.p2}</p>
+            <p className="text-[#555] text-lg leading-relaxed">{tr.about.p3}</p>
           </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {metrics.map((metric, i) => (
+          {tr.about.metrics.map((metric, i) => (
             <MetricCard key={metric.value} value={metric.value} label={metric.label} index={i} />
           ))}
         </div>
