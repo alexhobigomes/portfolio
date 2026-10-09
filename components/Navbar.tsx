@@ -68,7 +68,7 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between relative">
         <Link
           href="/"
           className={`font-display font-bold text-xl transition-colors hover:text-[#6c63ff] ${
@@ -78,7 +78,7 @@ export default function Navbar() {
           Alex Hobi
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           {navSections.map((item) => (
             <Link
               key={item}
